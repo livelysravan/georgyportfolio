@@ -1,18 +1,18 @@
-// Initialize particles.js
+// Initialize particles.js with a different configuration
 particlesJS('particles-js', {
     particles: {
         number: {
-            value: 100,
+            value: 80,
             density: {
                 enable: true,
                 value_area: 800
             }
         },
         color: {
-            value: '#130303'
+            value: ['#ff0000', '#00ff00', '#0000ff']
         },
         shape: {
-            type: 'circle',
+            type: 'triangle',
             stroke: {
                 width: 0,
                 color: '#000000'
@@ -23,20 +23,20 @@ particlesJS('particles-js', {
         },
         opacity: {
             value: 0.5,
-            random: false,
+            random: true,
             anim: {
-                enable: false,
+                enable: true,
                 speed: 1,
                 opacity_min: 0.1,
                 sync: false
             }
         },
         size: {
-            value: 3,
+            value: 5,
             random: true,
             anim: {
-                enable: false,
-                speed: 40,
+                enable: true,
+                speed: 10,
                 size_min: 0.1,
                 sync: false
             }
@@ -44,13 +44,13 @@ particlesJS('particles-js', {
         line_linked: {
             enable: true,
             distance: 150,
-            color: '#130303',
+            color: '#ffffff',
             opacity: 0.4,
             width: 1
         },
         move: {
             enable: true,
-            speed: 6,
+            speed: 3,
             direction: 'none',
             random: false,
             straight: false,
@@ -68,7 +68,7 @@ particlesJS('particles-js', {
         events: {
             onhover: {
                 enable: true,
-                mode: 'repulse'
+                mode: 'bubble'
             },
             onclick: {
                 enable: true,
@@ -84,10 +84,10 @@ particlesJS('particles-js', {
                 }
             },
             bubble: {
-                distance: 400,
-                size: 40,
+                distance: 250,
+                size: 10,
                 duration: 2,
-                opacity: 8,
+                opacity: 0.8,
                 speed: 3
             },
             repulse: {
@@ -105,18 +105,25 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-
-// Vanilla Tilt initialization for cards
+// Vanilla Tilt initialization for card hover effect
 VanillaTilt.init(document.querySelectorAll(".card"), {
     max: 25,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.5
+    speed: 400
 });
 
-// Parallax effect for Hero Section
-window.addEventListener('scroll', () => {
-    const hero = document.getElementById('hero');
-    const scrollPosition = window.scrollY;
-    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+// Smooth scrolling for navigation links
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Parallax effect for hero section
+document.addEventListener('scroll', function(e) {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('#hero');
+    parallax.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
 });
