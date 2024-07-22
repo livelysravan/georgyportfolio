@@ -105,12 +105,6 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-// Toggle dark mode
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    themeToggle.textContent = document.body.classList.contains('dark-theme') ? '🌙' : '☀️';
-});
 
 // Vanilla Tilt initialization for cards
 VanillaTilt.init(document.querySelectorAll(".card"), {
